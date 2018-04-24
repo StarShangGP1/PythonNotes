@@ -83,3 +83,4 @@ print(cat.age)
 print(dir(Cat()))
 
 del cat.age
+print(cat)
