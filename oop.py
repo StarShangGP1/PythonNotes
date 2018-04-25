@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 
 from types import MethodType
+from enum import Enum, unique
+from hello import hello
 
 print('------模块------')
 
@@ -165,3 +167,85 @@ class Ostrich(Bird):
 
 print()
 print('-------定制类-------')
+
+class Student(object):
+	def __init__(self, name):
+		self.name = name
+
+	def __str__(self):
+	 	return self.name
+	__repr__ = __str__
+
+print(Student('Toms'))
+print(Student.__repr__.__name__)
+
+class Chain(object):
+	def __init__(self, path=''):
+		self._path = path
+
+	def __getattr__(self, path):
+		return Chain('%s/%s' % (self._path, path))
+
+	def __str__(self):
+		return self._path
+
+	def __call__(self):
+		print('call me')
+
+	__repr__ = __str__
+
+print(Chain().status.user.timeline.list)
+s = Chain()
+s()
+
+print(callable(s))
+
+print()
+print('-------使用枚举类-------')
+
+
+Month = Enum('Month', (
+	'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
+	'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+	))
+print(Month)
+print(dir(Month))
+
+print([name for name, member in Month.__members__.items()])
+
+for name, member in Month.__members__.items():
+	print(name, '=>', member, ',', member.value)
+
+print('------------')
+
+@unique
+class Weekday(Enum):
+	Sun = 0
+	Mon = 1
+	Tue = 2
+	Wed = 3
+	Thu = 4
+	Fri = 5
+	Sat = 6
+
+for name, member in Weekday.__members__.items():
+	print(name, '=>', member)
+
+print()
+print('------使用元类------')
+
+class App(object):
+	def run(self):
+		print('app is running...')
+
+def fn(self, name='world'):
+	print('Hello, %s.' % name)
+
+Hello = type('Hello', (App, ), dict(hello=fn, age=20))
+
+print(Hello)
+h = Hello()
+h.run()
+h.hello()
+print(h.age)
+print(dir(Hello))
