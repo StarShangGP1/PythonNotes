@@ -307,9 +307,9 @@ class ModelMetaclass(type):
 		mappings = dict()
 		for k, v in attrs.items():
 			if isinstance(v, Field):
-				print('Found mapping: %s ==> %s' % (k, v))
-				mapping[k] = v
-		for k in mapping.keys():
+				print('Found mapping: %s => %s' % (k, v))
+				mappings[k] = v
+		for k in mappings.keys():
 			attrs.pop(k)
 		attrs['__mappings__'] = mappings # 保存属性和列的映射关系
 		attrs['__table__'] = name # 假设表名和类名一致
@@ -336,8 +336,8 @@ class Model(dict, metaclass=ModelMetaclass):
 			params.append('?')
 			args.append(getattr(self, k, None))
 		sql = 'insert into %s (%s) values (%s)' % (self.__table__, ','.join(fields), ','.join(params))
-		print('SQL: %S' % sql)
-		print('ARGS: %S' % str(args))
+		print('SQL: %s' % sql)
+		print('ARGS: %s' % str(args))
 
 class User(Model):
 	id = IntegerField('id')
