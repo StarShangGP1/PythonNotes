@@ -269,3 +269,37 @@ reduce把一个函数作用在一个序列[x1, x2, x3, ...]上，
 '''
 # metaclass是Python中非常具有魔术性的对象，
 # 它可以改变类创建时的行为。这种强大的功能使用起来务必小心。
+
+# 错误处理
+'''
+	try:
+		pass
+	except Exception as e:
+		raise
+	else:
+		pass
+	finally:
+		pass
+'''
+
+# Python所有的错误都是从BaseException类派生的
+# Python内置的logging模块可以非常容易地记录错误信息
+
+# 调试
+# print()
+# 断言 assert assert n != 0, 'n is zero!'
+# logging 它允许你指定记录信息的级别，有debug，info，warning，error等几个级别
+# pdb
+# pdb.set_trace()
+# IDE
+
+# TDD 单元测试
+
+# 文档测试
+
+# 三目运算符
+'''
+x = 0
+y = x if x>0 else 'not zero'
+print(y)
+'''
