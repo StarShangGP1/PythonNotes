@@ -303,3 +303,27 @@ x = 0
 y = x if x>0 else 'not zero'
 print(y)
 '''
+
+# IO
+
+# 文件读写
+# open()
+# file-like Object
+# StringIO
+# BytesIO
+
+# 操作文件和目录
+# os.name
+# 如果是posix，说明系统是Linux、Unix或Mac OS X，如果是nt，就是Windows系统。
+# os.environ
+# os.path.abspath('.')
+# os.path.join(root, 'testdir')
+# os.mkdir(testdir)
+# os.rmdir(testdir)
+# os.path.splitext()可以直接让你得到文件扩展名
+
+# 序列化
+# pickle.dumps(x)
+# pickle.loads(x)
+# json.dumps(x)
+# json.loads(x)
