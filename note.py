@@ -327,3 +327,8 @@ print(y)
 # pickle.loads(x)
 # json.dumps(x)
 # json.loads(x)
+
+# 进程和线程
+# os.getpid()
+# os.fork()
+# multiprocessing
